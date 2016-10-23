@@ -1,0 +1,42 @@
+<div layout="column", layout-align="center center">
+  <svg width="95vw" height="550px" viewBox="-50 -50 1000 500" color-interpolation-filters="sRGB">
+    <defs>
+      <filter id="strangify">
+         <!--Composite the original with a variable opacity cloud texture -->
+        <feTurbulence type="fractalNoise" baseFrequency=".013" numOctaves="1" seed="46"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 0"/>
+        <feComposite operator="in" in="SourceGraphic" result="intermediate-1"/>
+
+        <!--Boost the contrast of the alpha channel and blur the resulting "highlights" -->
+        <feComponentTransfer>
+          <feFuncA type="table" tableValues="0 0 0 0 1 1 1"/>
+        </feComponentTransfer>
+         <feGaussianBlur stdDeviation="4"/>
+        <!--Increase the blur's intensity by boosting the post-blur alpha channel -->
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="1.5">
+        <!--Add flicker effect -->
+            <animate attributeName="slope" values="1.5;1.5;1.8;1.5;1.5;3;0;3;1.1'1.5;1.1;1.4;1.5;1.4;2;1;0;1.5;1;1.5;1.5;1.5;1.5;" dur="0.25s" repeatCount="indefinite"/>
+          </feFuncA>
+        </feComponentTransfer>
+
+           <!--Combine the flickering highlights with the intermediate result -->
+        <feComposite operator="over" in2="intermediate-1"/>
+      </filter>
+    </defs>
+
+    <g filter="url(#strangify)">
+    <text font-family="ITC Benguiat W01"  x="140" y="50" stroke="#ed2b12" fill="none" font-size="6rem" font-weight="800" stroke-width="2">
+      <tspan font-size="9rem" dy="31">S</tspan>
+      <tspan font-size="7rem" dy="-31" dx="-30,0,0,0,-8,0">talker.com</tspan>
+      <tspan font-size="6.5rem" dx="-500" dy="85">S</tspan>
+      <tspan font-size="6rem" dx="-35,0,0,-8,0,0,0" dy="0">omeone is</tspan>
+      <tspan font-size="6.5rem" dx="-400" dy="65">A</tspan>
+      <tspan font-size="6rem" dx="-35,0,0,-8,0,0,0" dy="0">lways</tspan>
+      <tspan font-size="6.5rem" dx="-260" dy="65">W</tspan>
+      <tspan font-size="6rem" dx="-35,0,0,-8,0,0,0" dy="0">atching...</tspan>
+    </text>
+    </g>
+
+  </svg>
+</div>

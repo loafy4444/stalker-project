@@ -1,0 +1,13 @@
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+  <md-button class="head-button" ui-sref="home"
+      ng-show="ctrl.appService.validUser === false">Home</md-button>
+  <md-button class="head-button" ui-sref="profile"
+      ng-show="ctrl.appService.validUser === true">Profile</md-button>
+
+  <md-button class="head-button" ui-sref="global">Global</md-button>
+
+  <md-button class="head-button" ng-click="ctrl.appService.logout()"
+      ng-show="ctrl.appService.validUser === true">Logout</md-button>
+  <md-button class="head-button" ui-sref="login"
+      ng-show="ctrl.appService.validUser === false">Login</md-button>
+</section>

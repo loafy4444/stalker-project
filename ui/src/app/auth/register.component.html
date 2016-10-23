@@ -1,0 +1,33 @@
+<div class="container">
+  <form ng-submit="ctrl.register()">
+    <div layout="column", layout-align="center center">
+      <div class="loginBox", layout="column">
+        <md-content class="md-padding", layout="column">
+          <md-input-container>
+            <label>UserName</label>
+            <input type="username" ng-model="ctrl.formData.username" required>
+            <div ng-messages="formData.username.$error">
+              <div ng-message="required">Required field.</div>
+            </div>
+          <md-input-container>
+            <label>Email</label>
+            <input type="email" ng-model="ctrl.formData.email" required>
+            <div ng-messages="formData.email.$error">
+              <div ng-message="required">Required field.</div>
+            </div>
+          <md-input-container>
+            <label>Password</label>
+            <input type="password" ng-model="ctrl.formData.password" required>
+            <div ng-messages="formData.password.$error">
+              <div ng-message="required">Required field.</div>
+            </div>
+          <div class="md-padding" layout="row" layout-align="center center">
+            <md-button class="head-button" type="submit"
+              ng-disabled="ctrl.appService.validUser === true">Sign Up</md-button>
+            <div flex></div><md-button ui-sref="login", md-no-ink>Already Registered?</md-button>
+          </div>
+      </div>
+    </div>
+    </form>
+
+</div>
